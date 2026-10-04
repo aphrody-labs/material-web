@@ -12,14 +12,15 @@ const steps = [
   ["Sass", "scripts/compile-sass.ts"],
   ["CSSResult modules", "scripts/css-to-ts.ts"],
   ["TypeScript", "tsc", "-p", "tsconfig.json"],
+  ["Public declarations", "scripts/bootstrap-types.ts"],
   ["GB lab TypeScript", "tsc", "-p", "labs/gb/tsconfig.json"],
 ] as const;
 
 const lastStep = new Map([
   ["sass", 1],
   ["css-to-ts", 2],
-  ["ts", 4],
-  ["build", 4],
+  ["ts", 5],
+  ["build", 5],
 ]).get(target);
 
 if (lastStep === undefined) {
@@ -35,6 +36,7 @@ for (const [label, ...args] of steps.slice(0, lastStep + 1)) {
     stdout: "inherit",
     stderr: "inherit",
   });
+  // eslint-disable-next-line no-await-in-loop -- Sass, CSS modules, JS and declarations depend on earlier build steps.
   const code = await child.exited;
   if (code !== 0) process.exit(code);
 }

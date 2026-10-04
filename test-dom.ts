@@ -72,3 +72,17 @@ GlobalRegistrator.register();
 rendreReseauNatif();
 
 await import("element-internals-polyfill");
+
+// happy-dom 20.14.5 skips WebIDL DOMString coercion in the input.type setter.
+// Chromium accepts undefined as attribute "undefined" and resolves the effective type to "text".
+// Preserve that platform behavior during Lit's initial construction/validation.
+const inputType = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "type");
+if (inputType?.set) {
+  const setType = inputType.set;
+  Object.defineProperty(HTMLInputElement.prototype, "type", {
+    ...inputType,
+    set(this: HTMLInputElement, value: unknown) {
+      setType.call(this, String(value));
+    },
+  });
+}

@@ -8,6 +8,8 @@
     "migration/",
     "aphrody-build.ts",
     "aphrody-css-minify.ts",
-    "test-dom.ts"
-  ]
+    "test-dom.ts",
+    "types/"
+  ],
+  "files": ["types/css-imports.d.ts"]
 }

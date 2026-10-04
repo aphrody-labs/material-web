@@ -116,9 +116,9 @@ export const styles = css `
   }
 
   /* Hide empty bar/fab regions so they do not reserve space. */
-  .top-bar:not(:has(*)),
-  .bottom-bar:not(:has(*)),
-  .fab:not(:has(*)) {
+  .top-bar[hidden],
+  .bottom-bar[hidden],
+  .fab[hidden] {
     display: none;
   }
 

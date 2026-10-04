@@ -92,27 +92,35 @@ export class Scaffold extends LitElement {
         if (next === this.sizeClass) {
             return;
         }
-        const update = () => {
+        const update = async () => {
             this.sizeClass = next;
             this.dispatchEvent(new CustomEvent("scaffold:size-class-change", {
                 detail: { sizeClass: next, width },
                 bubbles: true,
                 composed: true,
             }));
-            return this.updateComplete;
+            await this.updateComplete;
         };
-        if (!isServer && typeof document !== "undefined" && "startViewTransition" in document) {
-            document.startViewTransition(update);
+        const doc = this.ownerDocument;
+        const reducedMotion = doc.defaultView?.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+        if (!isServer && typeof doc.startViewTransition === "function" && !reducedMotion) {
+            doc.startViewTransition(update);
         }
         else {
-            update();
+            void update();
         }
+    }
+    hasSlot(name) {
+        return Array.from(this.children).some((child) => child.getAttribute("slot") === name);
+    }
+    handleSlotChange() {
+        this.requestUpdate();
     }
     render() {
         return html `
       <div class="scaffold" part="scaffold">
-        <header class="top-bar" part="top-bar">
-          <slot name="top-bar"></slot>
+        <header class="top-bar" part="top-bar" ?hidden=${!this.hasSlot("top-bar")}>
+          <slot name="top-bar" @slotchange=${this.handleSlotChange}></slot>
         </header>
         <nav class="navigation" part="navigation">
           <slot name="navigation"></slot>
@@ -120,11 +128,11 @@ export class Scaffold extends LitElement {
         <main class="body" part="body">
           <slot></slot>
         </main>
-        <footer class="bottom-bar" part="bottom-bar">
-          <slot name="bottom-bar"></slot>
+        <footer class="bottom-bar" part="bottom-bar" ?hidden=${!this.hasSlot("bottom-bar")}>
+          <slot name="bottom-bar" @slotchange=${this.handleSlotChange}></slot>
         </footer>
-        <div class="fab" part="fab">
-          <slot name="fab"></slot>
+        <div class="fab" part="fab" ?hidden=${!this.hasSlot("fab")}>
+          <slot name="fab" @slotchange=${this.handleSlotChange}></slot>
         </div>
       </div>
     `;

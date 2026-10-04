@@ -67,5 +67,7 @@ export declare class Scaffold extends LitElement {
     connectedCallback(): void;
     disconnectedCallback(): void;
     private updateSizeClass;
-    protected render(): import("lit-html").TemplateResult<1>;
+    private hasSlot;
+    private handleSlotChange;
+    protected render(): import("lit").TemplateResult<1>;
 }
