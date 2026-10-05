@@ -86,7 +86,7 @@ Sources : [Design tokens – Material Design 3](https://m3.material.io/foundatio
 - ⚠️ **Méfiance sur les forks** : `@usa-reddragon/...` et `@importantimport/...` sont abandonnés. Pour le spec couleur 2025 (DynamicScheme avec `SpecVersion.SPEC_2025`), un fork communautaire `@materialx/material-color-utilities` existe mais **n'est pas officiel**. Pour la version maintenue par Google : utiliser **`@material/material-color-utilities`**.
 
 ```bash
-npm install @material/material-color-utilities
+bun install @material/material-color-utilities
 ```
 
 ### HCT : l'espace couleur fondateur

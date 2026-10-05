@@ -168,7 +168,7 @@ et reporter les props d'icône MUI non triviales (`fontSize` -> `--md-icon-size`
 
 ```bash
 cd migration/codemods
-bunx jscodeshift -t transforms/icons.ts --parser=tsx --extensions=tsx 'src/**/*.tsx'
+jscodeshift -t transforms/icons.ts --parser=tsx --extensions=tsx 'src/**/*.tsx'
 ```
 
 À lancer **après** l'orchestrateur (composants) ou seul. Les noms valides et les

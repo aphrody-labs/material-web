@@ -364,10 +364,10 @@ Le CLI Tailwind v4 est configuré et installé dans ce monorepo en tant que dép
 
 ```bash
 # Compilation unitaire minifiée
-bunx tailwindcss -i src/theme.css -o dist/theme.css --minify
+tailwindcss -i src/theme.css -o dist/theme.css --minify
 
 # Mode écoute pour le développement incrémental
-bunx tailwindcss -i src/theme.css -o dist/theme.css --watch
+tailwindcss -i src/theme.css -o dist/theme.css --watch
 ```
 
 ---
