@@ -26,4 +26,4 @@ APHRODY_WEB_CHROME_BIN=/usr/bin/google-chrome-stable \
 
 ## Test d'intégration de référence (vert)
 
-La preuve haut niveau qui passe aujourd'hui est le build de `examples/showcase` (`bun build ./src/index.html` + `bun run typecheck` + smoke `Bun.serve`) : il bundle, résout et type-check les composants dans la vraie chaîne React (cf. `packages/ui/m3-react/FRAMEWORKS.md` pour l'intégration SSR/Next côté consommateur). Le smoke Aphrody Web ci-dessus est complémentaire (rendu navigateur pur, hors framework) et s'exécute dès qu'un Chromium pilotable est disponible.
+La preuve haut niveau qui passe aujourd'hui est le build de `examples/showcase` (`bun build ./src/index.html` + `bun check` + smoke `Bun.serve`) : il bundle, résout et type-check les composants dans la vraie chaîne React (cf. `packages/ui/m3-react/FRAMEWORKS.md` pour l'intégration SSR/Next côté consommateur). Le smoke Aphrody Web ci-dessus est complémentaire (rendu navigateur pur, hors framework) et s'exécute dès qu'un Chromium pilotable est disponible.

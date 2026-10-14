@@ -6,7 +6,7 @@ Material Design 3 web components with extended rendering and components.
 
 ```sh
 bun install
-bun run typecheck
+bun check
 bun test
 ```
 

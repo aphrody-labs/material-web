@@ -94,7 +94,7 @@ autres imports/JSX MUI sont laissés intacts (migration par lots).
 - Pas de résolution de re-exports indirects (`import { Button } from './ui'`).
 - Le renommage `Tab`→`MdPrimaryTab` ne distingue pas primary/secondary (choix par défaut).
 - jscodeshift via `recast` reformate parfois l'indentation autour des nœuds modifiés
-  (cosmétique — passer un formatter type prettier/biome après coup).
+  (cosmétique — exécuter `bun fmt --write` après coup).
 
 ---
 

@@ -75,9 +75,9 @@ source). `npm`/`pnpm`/`npx` are forbidden in every script.
 ```bash
 bun install
 bun run build          # turbo + Bun.build / sass-embedded / tsc (.d.ts)
-bun run typecheck      # tsc — canonical (+ shipped .d.ts)
+bun check      # tsc — canonical (+ shipped .d.ts)
 bun run typecheck:fast # tsgo (TS7 native) — ~4× faster, parity check
-bun run lint           # oxlint
+bun lint           # oxlint
 bun run test           # bun test — headless components (happy-dom) + units
 bun run test:browser   # aphrody-web gate — real Chromium
 bun run example        # examples/showcase — bun-native dev server
